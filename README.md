@@ -1,233 +1,152 @@
-<p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Basic Project Template</h1>
-    <br>
-</p>
+# 🎮 MiniGry – Projekt Zaliczeniowy
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](https://www.yiiframework.com/) application best for
-rapidly creating small projects.
+Dzień dobry, z tej strony student **Artem Semenko**, kierunek Informatyka, 5 semestr.
 
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
+Przygotowałem dla Pana krótką i prostą instrukcję, jak poprawnie uruchomić mój projekt **„MiniGry"** – serwis z grami przeglądarkow wykonany w frameworku **Yii2** (PHP) z bazą danych **MySQL**.
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![build](https://github.com/yiisoft/yii2-app-basic/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild)
+Z wyrazami szacunku – proszę przejść do poniższych kroków.
 
-DIRECTORY STRUCTURE
--------------------
+---
 
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
+## 📋 WYMAGANIA
 
+- Program **XAMPP** (Apache + MySQL + PHP 8.x)
+- **Composer** (menedżer pakietów PHP)
+- Przeglądarka internetowa (Chrome, Firefox, Edge)
 
+---
 
-REQUIREMENTS
-------------
+## 🚀 KROK 1: INSTALACJA PLIKÓW
 
-The minimum requirement by this project template that your Web server supports PHP 7.4.
-
-
-INSTALLATION
-------------
-
-### Install via Composer
-
-If you do not have [Composer](https://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](https://getcomposer.org/doc/00-intro.md#installation-nix).
-
-You can then install this project template using the following command:
-
-~~~
-composer create-project --prefer-dist yiisoft/yii2-app-basic basic
-~~~
-
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
-
-~~~
-http://localhost/basic/web/
-~~~
-
-### Install from an Archive File
-
-Extract the archive file downloaded from [yiiframework.com](https://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
-
-Set cookie validation key in `config/web.php` file to some random secret string:
-
-```php
-'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-    'cookieValidationKey' => '<secret random string goes here>',
-],
+1. Zainstalować program **XAMPP** (jeśli nie jest zainstalowany): https://www.apachefriends.org
+2. Pobrać projekt z GitHub i skopiować folder `yii2minigry` do lokalizacji:
 ```
+C:\xampp\htdocs\yii2minigry\
+```
+3. Otworzyć terminal (CMD lub PowerShell) w folderze projektu i wykonać:
+```bash
+cd C:\xampp\htdocs\yii2minigry
+composer install
+```
+> ⏳ Poczekać na zakończenie instalacji (2–5 minut)
 
-You can then access the application through the following URL:
+---
 
-~~~
-http://localhost/basic/web/
-~~~
+## 🗄️ KROK 2: KONFIGURACJA BAZY DANYCH
 
+1. Otworzyć **XAMPP Control Panel**
+2. Włączyć moduły **Apache** oraz **MySQL** (przycisk `Start`)
+3. W przeglądarce wejść na stronę:
+```
+http://localhost/phpmyadmin
+```
+4. Po lewej stronie kliknąć **„Nowa"** i utworzyć bazę danych o nazwie:
+```
+minigryver2
+```
+5. Wybrać zakładkę **„Importuj"**
+6. Kliknąć **„Wybierz plik"** i wskazać plik:
+```
+C:\xampp\htdocs\yii2minigry\minigryver2.sql
+```
+7. Na dole strony kliknąć **„Wykonaj"**
 
-### Install with Docker
+---
 
-Update your vendor packages
+## ⚙️ KROK 3: KONFIGURACJA POŁĄCZENIA Z BAZĄ
 
-    docker-compose run --rm php composer update --prefer-dist
-    
-Run the installation triggers (creating cookie validation code)
-
-    docker-compose run --rm php composer install    
-    
-Start the container
-
-    docker-compose up -d
-    
-You can then access the application through the following URL:
-
-    http://127.0.0.1:8000
-
-**NOTES:** 
-- Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))
-- The default configuration uses a host-volume in your home directory `.docker-composer` for composer caches
-
-
-CONFIGURATION
--------------
-
-### Database
-
-Edit the file `config/db.php` with real data, for example:
+Otworzyć plik `config/db.php` i upewnić się, że dane są poprawne:
 
 ```php
+<?php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+    'dsn' => 'mysql:host=localhost;dbname=minigryver2',
     'username' => 'root',
-    'password' => '1234',
-    'charset' => 'utf8',
+    'password' => '',
+    'charset' => 'utf8mb4',
 ];
 ```
 
-**NOTES:**
-- Yii won't create the database for you, this has to be done manually before you can access it.
-- Check and edit the other files in the `config/` directory to customize your application as required.
-- Refer to the README in the `tests` directory for information specific to basic application tests.
+---
 
+## 🌐 KROK 4: URUCHOMIENIE STRONY
 
-TESTING
--------
-
-Tests are located in `tests` directory. They are developed with [Codeception PHP Testing Framework](https://codeception.com/).
-By default, there are 3 test suites:
-
-- `unit`
-- `functional`
-- `acceptance`
-
-Tests can be executed by running
-
+1. Otworzyć przeglądarkę
+2. Wpisać w pasek adresu:
 ```
-vendor/bin/codecept run
+http://localhost/yii2minigry/web/
 ```
 
-The command above will execute unit and functional tests. Unit tests are testing the system components, while functional
-tests are for testing user interaction. Acceptance tests are disabled by default as they require additional setup since
-they perform testing in real browser. 
+---
 
+## 🔐 DANE TESTOWE DO LOGOWANIA
 
-### Running  acceptance tests
+| Login | Hasło |
+|-------|-------|
+| `TestPlayer` | `test123` |
+| `123` | `123456` |
+| `ArtemSemenko` | `artem123` |
 
-To execute acceptance tests do the following:  
+> Można również utworzyć nowe konto za pomocą opcji **„Zarejestruj się"**
 
-1. Rename `tests/acceptance.suite.yml.example` to `tests/acceptance.suite.yml` to enable suite configuration
+---
 
-2. Replace `codeception/base` package in `composer.json` with `codeception/codeception` to install full-featured
-   version of Codeception
+## 🎮 DOSTĘPNE GRY
 
-3. Update dependencies with Composer 
+| Gra | Opis | Punkty |
+|-----|------|--------|
+| ❌⭕ Kółko i Krzyżyk | Graj przeciwko komputerowi | +10 za wygraną |
+| 🎯 Kliknij Cele | Klikaj cele jak najszybciej | Punkty za celność |
+| 🐍 Wąż | Klasyczna gra Snake | Punkty za wynik |
+| 🖱️ Clicker | Klikaj jak najszybciej przez 10 sekund | Punkty za kliknięcia |
+| 🃏 Memory | Znajdź pary kart | Punkty za pamięć |
+| 🧱 Breakout | Rozbij wszystkie bloki | Punkty za bloki |
 
-    ```
-    composer update  
-    ```
+---
 
-4. Download [Selenium Server](https://www.seleniumhq.org/download/) and launch it:
-
-    ```
-    java -jar ~/selenium-server-standalone-x.xx.x.jar
-    ```
-
-    In case of using Selenium Server 3.0 with Firefox browser since v48 or Google Chrome since v53 you must download [GeckoDriver](https://github.com/mozilla/geckodriver/releases) or [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads) and launch Selenium with it:
-
-    ```
-    # for Firefox
-    java -jar -Dwebdriver.gecko.driver=~/geckodriver ~/selenium-server-standalone-3.xx.x.jar
-    
-    # for Google Chrome
-    java -jar -Dwebdriver.chrome.driver=~/chromedriver ~/selenium-server-standalone-3.xx.x.jar
-    ``` 
-    
-    As an alternative way you can use already configured Docker container with older versions of Selenium and Firefox:
-    
-    ```
-    docker run --net=host selenium/standalone-firefox:2.53.0
-    ```
-
-5. (Optional) Create `yii2basic_test` database and update it by applying migrations if you have them.
-
-   ```
-   tests/bin/yii migrate
-   ```
-
-   The database configuration can be found at `config/test_db.php`.
-
-
-6. Start web server:
-
-    ```
-    tests/bin/yii serve
-    ```
-
-7. Now you can run all available tests
-
-   ```
-   # run all available tests
-   vendor/bin/codecept run
-
-   # run acceptance tests
-   vendor/bin/codecept run acceptance
-
-   # run only unit and functional tests
-   vendor/bin/codecept run unit,functional
-   ```
-
-### Code coverage support
-
-By default, code coverage is disabled in `codeception.yml` configuration file, you should uncomment needed rows to be able
-to collect code coverage. You can run your tests and collect coverage with the following command:
+## 📁 STRUKTURA PROJEKTU (Yii2)
 
 ```
-#collect coverage for all tests
-vendor/bin/codecept run --coverage --coverage-html --coverage-xml
-
-#collect coverage only for unit tests
-vendor/bin/codecept run unit --coverage --coverage-html --coverage-xml
-
-#collect coverage for unit and functional tests
-vendor/bin/codecept run functional,unit --coverage --coverage-html --coverage-xml
+yii2minigry/
+├── config/
+│   ├── db.php              ← konfiguracja bazy danych
+│   └── web.php             ← główna konfiguracja
+├── controllers/
+│   ├── SiteController.php  ← logowanie, rejestracja, strona główna
+│   ├── GameController.php  ← wszystkie gry + zapis wyników
+│   ├── ProfileController.php ← profil użytkownika
+│   └── RankingController.php ← ranking graczy
+├── models/
+│   ├── User.php            ← model użytkownika
+│   ├── Games_results.php   ← model wyników gier
+│   ├── LoginForm.php       ← formularz logowania
+│   └── RegisterForm.php    ← formularz rejestracji
+├── views/
+│   ├── layouts/main.php    ← główny szablon (navbar, footer)
+│   ├── site/               ← strona główna, logowanie, rejestracja
+│   ├── game/               ← widoki gier (6 gier)
+│   ├── profile/            ← profil i statystyki
+│   └── ranking/            ← ranking graczy
+├── web/
+│   ├── index.php           ← punkt wejścia aplikacji
+│   └── .htaccess           ← konfiguracja URL
+└── minigryver2.sql         ← baza danych
 ```
 
-You can see code coverage output under the `tests/_output` directory.
+---
+
+## 🛠️ TECHNOLOGIE
+
+- **Backend:** PHP 8.x, Yii2 Framework
+- **Frontend:** HTML5, CSS3, Bootstrap 5, JavaScript
+- **Baza danych:** MySQL (phpMyAdmin)
+- **Serwer lokalny:** XAMPP (Apache)
+
+---
+
+W razie potrzeby chętnie udzielę dodatkowych wyjaśnień.
+
+Dziękuję za czas poświęcony na ocenę mojego projektu. 🙏🙂
+
+**Artem Semenko** | Informatyka | 5 semestr

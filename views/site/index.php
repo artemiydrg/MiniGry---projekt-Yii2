@@ -1,53 +1,101 @@
 <?php
-
-/** @var yii\web\View $this */
-
-$this->title = 'My Yii Application';
+$this->title = 'Główna';
+use yii\helpers\Url;
 ?>
-<div class="site-index">
 
-    <div class="jumbotron text-center bg-transparent mt-5 mb-5">
-        <h1 class="display-4">Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p>
+<div style="background:white; border-radius:15px; padding:30px; 
+            margin:30px 0; box-shadow:0 5px 20px rgba(0,0,0,0.1);">
+    <div class="text-center">
+        <h1 class="display-4">👋 Witaj, <?= htmlspecialchars($user->username) ?>!</h1>
+        <p class="lead">Twój wynik: <strong><?= $user->score ?></strong> punktów 🏆</p>
+        <p class="text-muted">Wybierz grę i zacznij zdobywać punkty!</p>
     </div>
+</div>
 
-    <div class="body-content">
+<h2 class="text-white text-center mb-4">🎮 Dostępne Gry</h2>
 
-        <div class="row">
-            <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+<div class="row g-4">
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100" style="border-radius:15px; cursor:pointer; transition:transform 0.3s;"
+             onmouseover="this.style.transform='translateY(-10px)'"
+             onmouseout="this.style.transform='translateY(0)'"
+             onclick="location.href='<?= Url::to(['/game/tictactoe']) ?>'">
+            <div class="card-body text-center p-4">
+                <div style="font-size:4rem;">❌⭕</div>
+                <h3 class="card-title mt-3">Kółko i Krzyżyk</h3>
+                <p class="card-text text-muted">Graj przeciwko komputerowi</p>
+                <span class="badge bg-success">+10 punktów</span>
             </div>
         </div>
+    </div>
 
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100" style="border-radius:15px; cursor:pointer; transition:transform 0.3s;"
+             onmouseover="this.style.transform='translateY(-10px)'"
+             onmouseout="this.style.transform='translateY(0)'"
+             onclick="location.href='<?= Url::to(['/game/target']) ?>'">
+            <div class="card-body text-center p-4">
+                <div style="font-size:4rem;">🎯</div>
+                <h3 class="card-title mt-3">Kliknij Cele</h3>
+                <p class="card-text text-muted">Klikaj cele jak najszybciej!</p>
+                <span class="badge bg-info">Punkty za celność</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100" style="border-radius:15px; cursor:pointer; transition:transform 0.3s;"
+             onmouseover="this.style.transform='translateY(-10px)'"
+             onmouseout="this.style.transform='translateY(0)'"
+             onclick="location.href='<?= Url::to(['/game/snake']) ?>'">
+            <div class="card-body text-center p-4">
+                <div style="font-size:4rem;">🐍</div>
+                <h3 class="card-title mt-3">Wąż</h3>
+                <p class="card-text text-muted">Klasyczna gra Snake</p>
+                <span class="badge bg-info">Punkty za wynik</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100" style="border-radius:15px; cursor:pointer; transition:transform 0.3s;"
+             onmouseover="this.style.transform='translateY(-10px)'"
+             onmouseout="this.style.transform='translateY(0)'"
+             onclick="location.href='<?= Url::to(['/game/clicker']) ?>'">
+            <div class="card-body text-center p-4">
+                <div style="font-size:4rem;">🖱️</div>
+                <h3 class="card-title mt-3">Clicker</h3>
+                <p class="card-text text-muted">Klikaj jak najszybciej!</p>
+                <span class="badge bg-warning">10 sekund</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100" style="border-radius:15px; cursor:pointer; transition:transform 0.3s;"
+             onmouseover="this.style.transform='translateY(-10px)'"
+             onmouseout="this.style.transform='translateY(0)'"
+             onclick="location.href='<?= Url::to(['/game/memory']) ?>'">
+            <div class="card-body text-center p-4">
+                <div style="font-size:4rem;">🃏</div>
+                <h3 class="card-title mt-3">Memory</h3>
+                <p class="card-text text-muted">Znajdź pary kart!</p>
+                <span class="badge bg-purple" style="background:#764ba2;">Punkty za pamięć</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100" style="border-radius:15px; cursor:pointer; transition:transform 0.3s;"
+             onmouseover="this.style.transform='translateY(-10px)'"
+             onmouseout="this.style.transform='translateY(0)'"
+             onclick="location.href='<?= Url::to(['/game/breakout']) ?>'">
+            <div class="card-body text-center p-4">
+                <div style="font-size:4rem;">🧱</div>
+                <h3 class="card-title mt-3">Breakout</h3>
+                <p class="card-text text-muted">Rozbij wszystkie bloki!</p>
+                <span class="badge bg-danger">Punkty za bloki</span>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,19 +1,13 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-$this->title = 'Logowanie';
+$this->title = 'Rejestracja';
 ?>
 <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-    <div style="background:white; border-radius:15px; padding:40px; 
+    <div style="background:white; border-radius:15px; padding:40px;
                 box-shadow:0 10px 40px rgba(0,0,0,0.2); max-width:400px; width:100%;">
-        
-        <h2 class="text-center mb-4">🎮 Zaloguj się</h2>
 
-        <?php if (Yii::$app->session->hasFlash('success')): ?>
-            <div class="alert alert-success">
-                <?= Yii::$app->session->getFlash('success') ?>
-            </div>
-        <?php endif; ?>
+        <h2 class="text-center mb-4">🎮 Zarejestruj się</h2>
 
         <?php $form = ActiveForm::begin(); ?>
 
@@ -23,12 +17,17 @@ $this->title = 'Logowanie';
             ])->label('Nazwa użytkownika') ?>
 
             <?= $form->field($model, 'password')->passwordInput([
-                'placeholder' => 'Hasło',
+                'placeholder' => 'Min. 6 znaków',
                 'class' => 'form-control'
             ])->label('Hasło') ?>
 
+            <?= $form->field($model, 'confirm_password')->passwordInput([
+                'placeholder' => 'Powtórz hasło',
+                'class' => 'form-control'
+            ])->label('Potwierdź hasło') ?>
+
             <div class="d-grid mt-3">
-                <?= Html::submitButton('Zaloguj się', [
+                <?= Html::submitButton('Zarejestruj się', [
                     'class' => 'btn btn-primary w-100'
                 ]) ?>
             </div>
@@ -36,8 +35,8 @@ $this->title = 'Logowanie';
         <?php ActiveForm::end(); ?>
 
         <div class="text-center mt-3">
-            <p>Nie masz konta? 
-                <?= Html::a('Zarejestruj się', ['site/register']) ?>
+            <p>Masz już konto? 
+                <?= Html::a('Zaloguj się', ['site/login']) ?>
             </p>
         </div>
     </div>

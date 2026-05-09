@@ -14,14 +14,34 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '',
+            'cookieValidationKey' => 'vwQEx17OQYf02LIR-DdqmHolbL6Hw3ej',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+        'identityClass' => 'app\models\User',
+        'enableAutoLogin' => false,
+        'loginUrl' => ['/site/login'],
+        ],
+        'urlManager' => [
+        'enablePrettyUrl' => true,
+        'showScriptName' => false,
+        'rules' => [
+        '' => 'site/index',
+        'login' => 'site/login',
+        'register' => 'site/register',
+        'logout' => 'site/logout',
+        'profile' => 'profile/index',
+        'ranking' => 'ranking/index',
+        'game/tictactoe' => 'game/tictactoe',
+        'game/target' => 'game/target',
+        'game/snake' => 'game/snake',
+        'game/clicker' => 'game/clicker',
+        'game/memory' => 'game/memory',
+        'game/breakout' => 'game/breakout',
+        'game/save-result' => 'game/save-result',
+        ],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
