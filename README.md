@@ -149,4 +149,4 @@ W razie potrzeby chętnie udzielę dodatkowych wyjaśnień.
 
 Dziękuję za czas poświęcony na ocenę mojego projektu. 🙏🙂
 
-**Artem Semenko** | Informatyka | 5 semestr
+**Artem Semenko** | Informatyka | 6 semestr
